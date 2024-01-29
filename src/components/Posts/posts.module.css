@@ -1,0 +1,11 @@
+.item {
+  font-weight: normal;
+
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
+
+.error {
+  color: red;
+}

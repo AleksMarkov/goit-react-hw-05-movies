@@ -1,0 +1,13 @@
+.text {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: red;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.link {
+  padding: 10px 15px;
+  color: blue;
+  font-size: 18px;
+}
