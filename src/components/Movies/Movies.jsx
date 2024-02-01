@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAllPosts } from '../../api/posts';
+import { getTrendingMovies } from '../../api/movies';
 
-import styles from './posts.module.css';
+import styles from './movies.module.css';
 
-const Posts = () => {
+const Movies = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ const Posts = () => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        const { data } = await getAllPosts();
+        const { data } = await getTrendingMovies();
 
         setResults(data.results?.length ? data.results : []);
       } catch (error) {
@@ -29,7 +29,7 @@ const Posts = () => {
 
   const elements = results.map(({ id, title }) => (
     <li key={id} className={styles.item}>
-      <Link to={`/posts/${id}`}>{title}</Link>
+      <Link to={`/movies/${id}`}>{title}</Link>
     </li>
   ));
 
@@ -42,4 +42,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default Movies;
