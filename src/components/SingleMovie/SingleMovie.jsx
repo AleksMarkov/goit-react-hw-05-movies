@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  NavLink,
+  Outlet,
+} from 'react-router-dom';
 import { getMovieById } from 'api/movies';
 
 import style from './single-movie.module.css';
@@ -11,9 +17,11 @@ const SingleMovie = () => {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
+  const location = useLocation();
+
+  const from = location.state?.from || '/';
 
   const navigate = useNavigate();
-  //   const goBack = () => navigate(-1);
 
   useEffect(() => {
     if (!id) return;
@@ -33,15 +41,13 @@ const SingleMovie = () => {
     fetchMovie();
   }, [id]);
 
+  const goBack = () => navigate(from);
+
   return (
     <div>
       {loading && <p>...Loading</p>}
       {error && <p>Error: {error}</p>}
-      <button
-        className={style.button}
-        onClick={() => navigate(-1)}
-        type="button"
-      >
+      <button className={style.button} onClick={goBack} type="button">
         {'\u2190'} Go back
       </button>
       {movie && (
@@ -86,16 +92,20 @@ const SingleMovie = () => {
               </div>
             </div>
           </div>
-          {/* <p>Additional information</p>
+          <p>Additional information</p>
           <ul>
             <li>
-              <NavLink to="cast">Cast</NavLink>
+              <NavLink to="cast" state={{ from }}>
+                Cast
+              </NavLink>
             </li>
             <li>
-              <NavLink to="reviews">Reviews</NavLink>
+              <NavLink to="reviews" state={{ from }}>
+                Reviews
+              </NavLink>
             </li>
             <Suspense> {<Outlet />}</Suspense>
-          </ul> */}
+          </ul>
         </>
       )}
     </div>

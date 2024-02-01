@@ -1,12 +1,12 @@
-import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+// import { Suspense } from 'react';
+// import { NavLink, Outlet } from 'react-router-dom';
 import SingleMovie from 'components/SingleMovie/SingleMovie';
 
 const SingleMoviePage = () => {
   return (
     <div>
       <SingleMovie />
-      <p>Additional information</p>
+      {/* <p>Additional information</p>
       <ul>
         <li>
           <NavLink to="cast">Cast</NavLink>
@@ -15,7 +15,7 @@ const SingleMoviePage = () => {
           <NavLink to="reviews">Reviews</NavLink>
         </li>
         <Suspense> {<Outlet />}</Suspense>
-      </ul>
+      </ul> */}
     </div>
   );
 };
