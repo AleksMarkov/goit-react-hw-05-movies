@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import SharedLayout from './SharedLayout/SharedLayout.jsx';
 
@@ -32,6 +32,7 @@ const AppRoutes = () => {
             <Route path="cast" element={<CastPage />} />
             <Route path="reviews" element={<ReviewsPage />} />
           </Route>
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
           <Route path="*" element={<NotFoundPage />} />{' '}
         </Route>
       </Routes>
